@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Most Popular Secrets</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wall/css/style.css' %}" />
+  </head>
+  <body>
+    <h3>Most Popular Secrets...</h3>
+    <a href="{% url 'wall:index' %}">Back</a><br><br>
+
+    <div id="secrets">
+      {% for secret in secrets %}
+      <br>
+        <div class="entry">
+         {{secret.post}} <i>({{secret.created_at|timesince}})</i> <b>{{secret.num_likes}} likes</b>
+
+         {% if current_user not in secret.like.all %}
+          <form action="{% url 'wall:add_like2' %}" method="POST">
+            <input type='hidden' name="user_id" value="{{request.session.user_id}}">
+            <input type='hidden' name="secret_id" value="{{secret.id}}">
+            {% csrf_token %}
+            <input type="submit" value="Like">
+          </form>
+        {% else %}
+          <i><b>--- You liked this!</b></i>
+        {% endif %}
+
+        {% if secret.creator == current_user %}
+          <form action="{% url 'wall:delete_secret2' %}" method="POST">
+            <input type='hidden' name="secret_id" value="{{secret.id}}">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+          </form>
+        {% endif %}
+
+        </div><br>
+      {% endfor %}
+    </div>
+  </body>
+</html>

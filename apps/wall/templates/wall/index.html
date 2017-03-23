@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Secrets</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wall/css/style.css' %}" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h3>Welcome, {{request.session.current_user}}!</h3>
+      <form action="{% url 'wall:logout' %}" method="POST">
+        {% csrf_token %}
+        <input class="logout" type="submit" value="Logout">
+      </form>
+
+      <div id="post_secret">
+        <form action="{% url 'wall:add_secret' %}" method="POST">
+           {% csrf_token %}
+          <textarea rows="8" cols="60" name="secret">Your secret here...</textarea><br>
+          <input class="post" type="submit" value="Post"> <a href="{% url 'wall:most_popular' %}">Most Popular Secrets</a>
+        </form>
+      </div>
+
+      <h2>Recent Secrets...</h2>
+      <div id="secrets">
+        {% for secret in secrets %}
+          <div class="entry"><br>
+           {{secret.post}} <label class='secret_info'><i>({{secret.created_at|timesince}})</i> <b>{{secret.num_likes}} likes</b><label>
+
+           {% if current_user not in secret.like.all %}
+            <form action="{% url 'wall:add_like' %}" method="POST">
+              <input type='hidden' name="user_id" value="{{request.session.user_id}}">
+              <input type='hidden' name="secret_id" value="{{secret.id}}">
+              <input type="hidden" name="page" value=1>
+              {% csrf_token %}
+              <input type="submit" value="Like">
+            </form>
+          {% else %}
+            <i><b>-- You liked this!</b></i>
+          {% endif %}
+
+          {% if secret.creator == current_user %}
+            <form action="{% url 'wall:delete_secret' %}" method="POST">
+              <input type='hidden' name="secret_id" value="{{secret.id}}">
+              {% csrf_token %}
+              <input type="submit" value="Delete">
+            </form>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
