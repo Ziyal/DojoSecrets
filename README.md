@@ -7,8 +7,8 @@ __Built With:__
   * HTML/CSS
   * Bootstrap
 
-![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/secrets.png "Dojo Secrets")
+![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/dojosecrets1.png "Dojo Secrets")
 
-![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/secrets.png "Dojo Secrets")
+![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/dojosecrets2.png "Dojo Secrets")
 
-![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/secrets.png "Dojo Secrets")
+![Dojo Secrets](https://github.com/Ziyal/DojoSecrets/blob/master/screenshots/dojosecrets3.png "Dojo Secrets")
