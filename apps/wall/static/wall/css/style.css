@@ -1,36 +1,75 @@
-* {
-  font-family: helvetica;
+body {
+  background-color: #c0cfd3;
 }
 
-#container {
-  display: inline-block;
-  margin-left: 100px;
+.main_container {
+  display: block;
+  margin: 0 auto;
+  width: 700px;
 }
 
-h3 {
+.container {
   display: inline-block;
+  width: 630px;
+  background-color: white;
+  border: dotted lightgray 2px;
+  padding: 0px 25px 0px 25px;
+  margin: 20px;
+}
+
+.top_container {
+  display: inline-block;
+  margin-top: 15px;
+  width: 630px;
+}
+
+/* TOPBAR */
+h4 {
+  display: inline-block;
+    font-family: "Barrio", cursive;
 }
 
 .logout {
-  margin-left: 20px;
-  padding: 6px 10px 5px 10px;
-  background-color: white;
-  font-weight: bolder;
-  border-radius: 6px;
-  border: solid red 2px;
-  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 2px;
 }
 
 form {
   display: inline-block;
 }
 
-.post {
-  width: 50px;
-  margin: 10px 10px 10px 0px;
-  width: 50px;
+/* FORM */
+.post_btn {
+  margin-top: 0px;
+}
+
+/* RECENT SECRETS */
+h2 {
+  font-family: "Barrio", cursive;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.secret {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .secret_info {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 14px;
 }
+
+.liked {
+  font-style: italic;
+  color: #b7b7b7;
+}
+
+hr {
+  margin: 15px;
+}
+
+

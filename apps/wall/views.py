@@ -11,7 +11,7 @@ def index(request):
 
     context = {
         "users": User.objects.all,
-        "secrets": Secret.objects.annotate(num_likes=Count('like')),
+        "secrets": Secret.objects.annotate(num_likes=Count('like')).order_by('-created_at'),
         "current_user": User.objects.get(id=request.session['user_id'])
     }
     return render(request, 'wall/index.html', context)
@@ -56,7 +56,6 @@ def delete_secret2(request):
     post_to_delete = Secret.objects.get(id=request.POST['secret_id'])
     post_to_delete.delete()
     return redirect('wall:most_popular')
-
 
 def logout(request):
     request.session.clear()
